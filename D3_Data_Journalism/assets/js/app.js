@@ -1,6 +1,6 @@
 // SVG dimensions
 var svgWidth = 800;
-var svgHeight = 600;
+var svgHeight = 800;
 
 var margin = {
   top: 20,
@@ -55,7 +55,7 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
       .call(yAxis);
 
     // Step 5: Create circles and label them
-    chartGroup.selectAll("circle")
+   chartGroup.selectAll("circle")
         .data(newsData)
         .enter()
         .append("circle")
@@ -87,6 +87,8 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
         .on("mouseout", function(d, i) {
             toolTip.hide(d, this)
         });
+        
+        
     
     // Step 6: Initialize tool tip
     var toolTip = d3.tip()
