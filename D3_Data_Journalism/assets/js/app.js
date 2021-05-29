@@ -54,16 +54,16 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
     chartGroup.append("g")
       .call(yAxis);
 
-    // Step 5: Create circles
-    var circlesGroup = chartGroup.selectAll("circle")
+    // Step 5: Create circles and label them
+    chartGroup.selectAll("circle")
         .data(newsData)
         .enter()
         .append("circle")
         .attr("cx", d => xScale(d.poverty))
         .attr("cy", d => yScale(d.healthcare))
         .attr("r", "10")
-        .attr("fill", "blue")
-        .attr("opacity", "0.5")
+        .attr("fill", "lightblue")
+        .attr("opacity", "1")
         .on("mouseover", function(d, i) {
             toolTip.show(d, this)
         })
@@ -71,12 +71,21 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
             toolTip.hide(d, this)
         });
     
+    chartGroup.selectAll("text")
+        .data(newsData)
+        .enter()
+        .append("text")
+        .text(d=>d.abbr)
+        .attr("x", (d=>xScale(d.poverty)))
+        .attr("y", (d=>yScale(d.healthcare)))
+        .attr("font-size", 10);
+    
     // Step 6: Initialize tool tip
     var toolTip = d3.tip()
         .attr("class", "tooltip")
         .offset([80, -60])
         .html(function(d) {
-            return (`<strong>${d.abbr}<strong><hr>Percent in Poverty: ${d.poverty} Percent Lacking Healthcare: ${d.healthcare}`);
+            return (`<strong>${d.state}</strong><hr>Percent in Poverty: ${d.poverty} Percent Lacking Healthcare: ${d.healthcare}`);
     });
 
     // Step 7: Create tooltip in the chart
