@@ -24,7 +24,7 @@ The data set included with the assignment is based on 2014 ACS 1-year estimates 
 
 ## Your Task
 
-### Core Assignment: D3 Dabbler (Required Assignment)
+### D3 Dabbler
 
 ![4-scatter](Images/4-scatter.jpg)
 
