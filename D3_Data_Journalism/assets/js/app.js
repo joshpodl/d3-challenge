@@ -78,9 +78,15 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
         .text(d=>d.abbr)
         .attr("x", (d=>xScale(d.poverty)))
         .attr("y", (d=>yScale(d.healthcare -0.1)))
-        .attr("class", "text")
         .style("text-anchor", "middle")
-        .attr("font-size", 10);
+        .attr("font-size", 10)
+        .attr("stroke", "gray")
+        .on("mouseover", function(d, i) {
+            toolTip.show(d, this)
+        })
+        .on("mouseout", function(d, i) {
+            toolTip.hide(d, this)
+        });
     
     // Step 6: Initialize tool tip
     var toolTip = d3.tip()
