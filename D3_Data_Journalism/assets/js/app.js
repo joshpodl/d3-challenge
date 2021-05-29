@@ -80,7 +80,7 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
         .attr("y", (d=>yScale(d.healthcare -0.1)))
         .style("text-anchor", "middle")
         .attr("font-size", 10)
-        .attr("stroke", "gray")
+        .attr("stroke", "white")
         .on("mouseover", function(d, i) {
             toolTip.show(d, this)
         })
