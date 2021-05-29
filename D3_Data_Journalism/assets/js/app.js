@@ -28,8 +28,7 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
     // Step 1: Parse Data
     newsData.forEach(function(data) {
       data.poverty = +data.poverty;
-      data.healthcare= +data.healthcare;
-      data.abbr= +data.abbr;  
+      data.healthcare= +data.healthcare;  
     });
 
     // Step 2: Create scale functions
