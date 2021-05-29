@@ -44,7 +44,7 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
 
     // Step 3: Create axis functions
     var xAxis = d3.axisBottom(xScale).ticks(8);
-    var yAxis = d3.axisLeft(yScale);
+    var yAxis = d3.axisLeft(yScale).ticks(10);
 
     // Step 4: Append Axes to the chart
     chartGroup.append("g")
@@ -106,12 +106,12 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("% in Poverty");
+      .text("Lacking Healthcare (%)");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("% Lacking Healthcare");
+      .text("In Poverty (%)");
     
     // Step 9: Catch error function
     }).catch(function(error) {
