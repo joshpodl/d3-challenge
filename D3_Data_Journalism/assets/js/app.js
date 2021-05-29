@@ -1,6 +1,6 @@
 // SVG dimensions
-var svgWidth = 960;
-var svgHeight = 500;
+var svgWidth = 800;
+var svgHeight = 600;
 
 var margin = {
   top: 20,
@@ -43,8 +43,8 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
       .nice();
 
     // Step 3: Create axis functions
-    var xAxis = d3.axisBottom(xScale).ticks(10);
-    var yAxis = d3.axisLeft(yScale).ticks(10);
+    var xAxis = d3.axisBottom(xScale).ticks(8);
+    var yAxis = d3.axisLeft(yScale);
 
     // Step 4: Append Axes to the chart
     chartGroup.append("g")
@@ -77,13 +77,15 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
         .append("text")
         .text(d=>d.abbr)
         .attr("x", (d=>xScale(d.poverty)))
-        .attr("y", (d=>yScale(d.healthcare)))
+        .attr("y", (d=>yScale(d.healthcare -0.1)))
+        .attr("class", "text")
+        .style("text-anchor", "middle")
         .attr("font-size", 10);
     
     // Step 6: Initialize tool tip
     var toolTip = d3.tip()
         .attr("class", "tooltip")
-        .offset([80, -60])
+        .offset([80, -80])
         .html(function(d) {
             return (`<strong>${d.state}</strong><hr>Percent in Poverty: ${d.poverty} Percent Lacking Healthcare: ${d.healthcare}`);
     });
